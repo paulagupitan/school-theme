@@ -46,10 +46,15 @@ function school_theme_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	//Custom Crop sizes
+	add_image_size( 'portrait-blog', 200, 250, true); // error in this line!
+	add_image_size( 'latest-blog', 400, 200, true); // error in this line!
+
+	// This theme uses wp_nav_() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'school-theme' ),
+			'header' => esc_html__( 'Header Menu Location', 'van' ),
+			'footer' => esc_html__( 'Footer Menu Location', 'van'),
 		)
 	);
 
@@ -99,6 +104,14 @@ function school_theme_setup() {
 			'flex-height' => true,
 		)
 	);
+	/**
+	 * Add support for Block Editor features.
+	 *
+	 * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/
+	 */
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'align-wide' );
 }
 add_action( 'after_setup_theme', 'school_theme_setup' );
 
@@ -175,4 +188,23 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+/**
+ * Change Excerpt Length to 20 words
+ */
 
+function van_excerpt_length($length) {
+	// $new_length
+	
+	return 20;
+
+}
+add_filter( 'excerpt_length', 'van_excerpt_length', 999 );
+
+/**
+ * Change Excerpt More text to a link
+ */
+function van_excerpt_more( $more ) {
+	$more = '...<a class="read-more" href="'. get_permalink() .'">Continue reading</a>';
+	return $more;
+}
+add_filter( 'excerpt_more', 'van_excerpt_more' );
