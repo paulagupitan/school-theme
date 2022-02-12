@@ -53,7 +53,8 @@ function van_register_custom_post_types() {
 add_action( 'init', 'van_register_custom_post_types' );
 
 function van_register_taxonomies() {
-    // Add Work Category taxonomy
+
+    // Add Staff Category taxonomy
     $labels = array(
         'name'              => _x( 'Staff Categories', 'taxonomy general name' ),
         'singular_name'     => _x( 'Staff Category', 'taxonomy singular name' ),
