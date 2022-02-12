@@ -30,7 +30,7 @@ get_header();
 
 		
 		?>
-    <section class="home-blog">
+    <section class="home-news">
         <h2>Recent News</h2>
         <?php
         $args = array(
