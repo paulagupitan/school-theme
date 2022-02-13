@@ -33,7 +33,7 @@ get_header();
 
 				$terms = get_terms( 
 					array(
-						'taxonomy' => 'van-staff-category',
+						'taxonomy' => 'van-staff-type',
 						
 					) 
 				);
@@ -46,7 +46,7 @@ get_header();
 							'posts_per_page' => -1,
 							'tax_query'      => array(
 								array(
-									'taxonomy' => 'van-staff-category',
+									'taxonomy' => 'van-staff-type',
 									'field'  => 'slug',
 									'terms'	 => $term->slug
 								)
