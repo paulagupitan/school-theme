@@ -79,7 +79,8 @@ function van_register_custom_post_types() {
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-groups',
-        'supports'           => array( 'title', 'thumbnail', 'editor' ),
+        'supports'           => array( 'title', 'editor', 'thumbnail' ),
+        'template_lock'      => 'all'
     );
     register_post_type( 'van-student', $args );
 
@@ -142,7 +143,7 @@ function van_register_taxonomies() {
         'query_var'         => true,
         'rewrite'           => array( 'slug' => 'van-categories' ),
     );
-    register_taxonomy( 'fwd-van-category', array( 'van-student' ), $args );
+    register_taxonomy( 'van-student-category', array( 'van-student' ), $args );
 
 }
 add_action( 'init', 'van_register_taxonomies');

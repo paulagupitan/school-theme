@@ -49,6 +49,7 @@ function school_theme_setup() {
 	//Custom Crop sizes
 	add_image_size( 'portrait-blog', 200, 250, true); // error in this line!
 	add_image_size( 'latest-blog', 400, 200, true); // error in this line!
+	add_image_size( 'student-page', 200, 300, true); // error in this line!
 
 	// This theme uses wp_nav_() in one location.
 	register_nav_menus(
@@ -199,7 +200,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 function van_excerpt_length($length) {
 	// $new_length
 	
-	return 20;
+	return 25;
 
 }
 add_filter( 'excerpt_length', 'van_excerpt_length', 999 );
@@ -208,7 +209,7 @@ add_filter( 'excerpt_length', 'van_excerpt_length', 999 );
  * Change Excerpt More text to a link
  */
 function van_excerpt_more( $more ) {
-	$more = '...<a class="read-more" href="'. get_permalink() .'">Continue reading</a>';
+	$more = '...<a class="read-more" href="'. get_permalink() .'">[...]</a>';
 	return $more;
 }
 add_filter( 'excerpt_more', 'van_excerpt_more' );
