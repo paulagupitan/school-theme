@@ -78,7 +78,7 @@ function van_register_custom_post_types() {
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-archive',
+        'menu_icon'          => 'dashicons-groups',
         'supports'           => array( 'title', 'thumbnail', 'editor' ),
     );
     register_post_type( 'van-student', $args );
