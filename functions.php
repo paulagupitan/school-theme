@@ -198,9 +198,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 
 function van_excerpt_length($length) {
-	// $new_length
-	
-	return 25;
+	if (is_post_type_archive( 'van-student' )) {
+		return 25;
+	}else{
+		return 30;
+	}
 
 }
 add_filter( 'excerpt_length', 'van_excerpt_length', 999 );
@@ -209,7 +211,11 @@ add_filter( 'excerpt_length', 'van_excerpt_length', 999 );
  * Change Excerpt More text to a link
  */
 function van_excerpt_more( $more ) {
-	$more = '...<a class="read-more" href="'. get_permalink() .'">[...]</a>';
+	if (is_post_type_archive('van-student')) {
+		$more = ' <a class="read-more" href="'. get_permalink() .'">Read more about the student</a>';
+	}else{
+		$more = '...<a class="read-more" href="'. get_permalink() .'">[...]</a>';
+	}
 	return $more;
 }
 add_filter( 'excerpt_more', 'van_excerpt_more' );

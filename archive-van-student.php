@@ -36,11 +36,13 @@ get_header();
 			echo '<article>';
 			echo '<a href="'. get_permalink() .'">';
 				echo '<h2>' .get_the_title(). '</h2>';
-				the_post_thumbnail('student-page');
+				the_post_thumbnail('medium');
 				// Changed from large to medium
 			echo '</a>';
-			echo the_excerpt(), '<a href="'.get_permalink().'">Read more about the student...</a>';
+			the_excerpt();
 			echo '</article>';
+			echo get_the_term_list( $post->ID, 'van-student-category', 'Specialty: ');
+
 		}
 		wp_reset_postdata();
 	}

@@ -10,31 +10,68 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<!-- <main id="primary" class="site-main"> -->
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <header class="entry-header">
+        <?php
+		if ( is_singular() ) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
+		else :
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		endif;
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'school-theme' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'school-theme' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
 		?>
+    </header><!-- .entry-header -->
+    <div class="entry-content">
+        <div class="student-item">
+            <?php
+        the_post_thumbnail('medium');
+		the_content();
+		?>
+        </div>
+        <h3>Meet Other Designer Students:</h3>
+        <?php
+			$terms = get_the_terms( $post->ID, 'van-student-category' );
+			if ( $terms && ! is_wp_error( $terms ) ) {
+				foreach ( $terms as $term ) {
+					$args = array(
+						'post_type'      => 'van-student',				
+						'posts_per_page' => -1,		
+						'post__not_in'	=>	array ($post->ID, 'van-student-category'),
+						'order'          => 'ASC',				
+						'orderby'        => 'title',	
+						'tax_query'		=> array(
+							array(
+								'taxonomy'  => 'van-student-category',
+								'field'		=> 'slug',
+								'terms'		=> $term->slug
+							)
+						)		
+					);		
+					$query = new WP_Query( $args );							 				
+					if ( $query -> have_posts() ) {	
+						?>
+        <?php
+						while ( $query -> have_posts() ) {				
+							$query -> the_post();	
+							?>
+        <div class="other-students">
+            <?php			
+							echo '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';				
+						}		
+						wp_reset_postdata();
+							?>
+        </div>
+        <?php								 
+					}
+				}
+			}
+			?>
 
-	</main><!-- #main -->
+    </div><!-- .entry-content -->
+</article><!-- #post-<?php the_ID(); ?> -->
 
 <?php
-get_sidebar();
 get_footer();
