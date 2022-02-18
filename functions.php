@@ -47,8 +47,8 @@ function school_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	//Custom Crop sizes
-	add_image_size( 'portrait-blog', 200, 250, true); // error in this line!
-	add_image_size( 'latest-blog', 400, 200, true); // error in this line!
+	add_image_size( 'news-blog', 300, 200, true); // error in this line!
+	add_image_size( 'small-blog', 300, 257, true); // error in this line!
 	add_image_size( 'student-page', 200, 300, true); // error in this line!
 
 	// This theme uses wp_nav_() in one location.

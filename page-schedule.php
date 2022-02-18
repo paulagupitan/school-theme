@@ -19,19 +19,40 @@ get_header();
 
     <h1><?php the_title();?></h1>
 
-    <?php if(have_rows('schedule')):?>
+    <div class="entry-content"></div>
+    <p><?php the_content();?></p>
 
-    <?php  while ( have_rows('schedule'))?>
-    <?php the_sub_field('date');?>
+    <?php 
+    if( have_rows('schedule')):
+        echo '<table class="schedule">';
+        echo '<tbody>';
 
-    <?php endwhile;?>
+        while( have_rows('schedule')) : the_row();
 
-    <?php endif;?>
+            $date = get_sub_field('date');
+            $course = get_sub_field('course');
+            $instructor = get_sub_field('instructor');
 
+            echo '<tr>';
+                echo '<td><strong>'.$date.'</strong></td>';
+                    echo '<td>';
+                        echo '<strong>Course: </strong>'
+                        .$course;
+                    echo'</td>';
+                
 
-
+                    echo '<td>';
+                        echo '<strong>Instructor: </strong>'
+                        .$instructor;
+                    echo'</td>';
+            echo '</tr>';
+        
+        endwhile;
+        echo '</tbody>';
+        echo '</table>';
+    endif;
+    ?>
 </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

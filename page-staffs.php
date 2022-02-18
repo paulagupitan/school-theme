@@ -57,26 +57,35 @@ get_header();
 						$query = new WP_Query( $args );
 						
 						if ( $query -> have_posts() ) {
+							echo '<section class="staff-wrapper">';
 							echo "<h2>". $term->name."</h2>";
 						
 							// Output Content
 							while ( $query -> have_posts() ) {
 								$query -> the_post();
-						
+								echo '<article class="staff-items">';
+								echo "<h3>".the_title()."</h3>";
+
 								if ( function_exists( 'get_field' ) ) {
 									if ( get_field( 'biography' ) ) {
-										echo '<h2 id="'. get_the_ID() .'">'. get_the_title() .'</h2>';
-										the_field( 'biography' );
+										echo '<p>';
+										echo the_field( 'biography' );
+										echo'</p>';
 									}
-									?>
-            <div>
-                <?php the_field('courses'); ?>
-            </div>
-            <?php
+										
+									if (get_field('courses')) {
+										echo the_field('courses');
+									}
+										
+									if (get_field('website')) {
+										echo "<p><a href='".get_field('website')."'>Instructor Website</a>";
+									}
+										
 								}
-						
+								echo '</article>';
 							}
 							wp_reset_postdata();
+							echo'</section>';
 						}
 						
 					}
