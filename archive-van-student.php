@@ -42,6 +42,7 @@ get_header();
 			the_excerpt();
 			echo '</article>';
 			echo get_the_term_list( $post->ID, 'van-student-category', 'Specialty: ');
+			
 
 		}
 		wp_reset_postdata();

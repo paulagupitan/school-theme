@@ -25,11 +25,11 @@ get_header();
 		?>
     </header><!-- .entry-header -->
     <div class="entry-content">
-        <div class="student-item">
+        <div class="student-single">
             <?php
-        the_post_thumbnail('medium');
-		the_content();
-		?>
+			the_post_thumbnail('medium');
+			the_content();
+			?>
         </div>
         <h3>Meet Other Designer Students:</h3>
         <?php
