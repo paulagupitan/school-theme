@@ -687,6 +687,7 @@ svg path {
     .blog .site,
     .single-post .site,
     .van-student-template-default .site,
+    .post-type-archive-van-staff .site,
     .post-type-archive-van-student .site {
       grid-template-columns: 1fr minmax(0, 1000px) 1fr;
       grid-template-areas:
