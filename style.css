@@ -977,6 +977,23 @@ svg path {
   margin: 0 0 1.5em;
 }
 /* Home Page */
+@media screen and (min-width: 600px) {
+  .home-news h2 {
+    width: 100%;
+  }
+  .home-news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .home-news article {
+    width: 32%;
+    padding: 0 0 3rem;
+  }
+  .home-news h3 {
+    text-align: center;
+  }
+}
 
 /* Students Page */
 /* section {
@@ -1008,47 +1025,6 @@ svg path {
     padding: 0 0 3rem;
   }
 }
-
-/* Student single page */
-
-.single-title {
-  text-align: center;
-}
-.student-single {
-  padding: 2rem;
-}
-
-.meet-others {
-  padding: 2rem;
-}
-
-@media only screen and (min-width: 600px) {
-  .student-single {
-    position: relative;
-  }
-
-  .student-single img {
-    display: inline;
-    float: right;
-  }
-  .student-item {
-    width: 48%;
-    margin: 0 0 3rem;
-  }
-  .alignleft {
-    display: inline;
-    float: left;
-    margin-right: 1.5em;
-  }
-}
-
-/* @media screen and (min-width: 600px) {
-  .student-single {
-    display: inline;
-    float: right;
-    margin-right: 1.75rem;
-  }
-} */
 
 /* Student taxonomy */
 @media screen and (min-width: 600px) {
@@ -1137,6 +1113,25 @@ svg path {
   display: block;
 }
 
+/* Sidebar
+--------------------------------------------- */
+
+.wp-block-categories-list {
+  padding-left: 0rem;
+}
+
+@media screen and (min-width: 600px) {
+  .widget-area {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .widget-area section {
+    width: 40%;
+    padding: 3rem;
+  }
+}
 /* Footer
 --------------------------------------------- */
 .site-footer {
