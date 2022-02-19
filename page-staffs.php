@@ -64,7 +64,9 @@ get_header();
 							while ( $query -> have_posts() ) {
 								$query -> the_post();
 								echo '<article class="staff-items">';
-								echo "<h3>".the_title()."</h3>";
+								echo "<h3>";
+								the_title();
+								echo "</h3>";
 
 								if ( function_exists( 'get_field' ) ) {
 									if ( get_field( 'biography' ) ) {

@@ -33,14 +33,15 @@ get_header();
 		while ( $query -> have_posts()) {
 			$query -> the_post();
 			
-			echo '<article>';
+			echo '<article class="single-page">';
 			echo '<a href="'. get_permalink() .'">';
 				echo '<h2>' .get_the_title(). '</h2>';
-				the_post_thumbnail('medium');
+				the_post_thumbnail('student-page');
 				// Changed from large to medium
 			echo '</a>';
-			the_excerpt();
+			
 			echo '</article>';
+			the_excerpt();
 			echo get_the_term_list( $post->ID, 'van-student-category', 'Specialty: ');
 			
 
