@@ -29,7 +29,7 @@ get_header();
 	);
 	$query = new WP_Query ( $args );
 	if ( $query -> have_posts() ) {
-		
+		echo "<section class='students'>";
 		while ( $query -> have_posts()) {
 			$query -> the_post();
 			
@@ -39,14 +39,14 @@ get_header();
 				the_post_thumbnail('student-page');
 				// Changed from large to medium
 			echo '</a>';
-			
-			echo '</article>';
 			the_excerpt();
 			echo get_the_term_list( $post->ID, 'van-student-category', 'Specialty: ');
+			echo '</article>';
 			
 
 		}
 		wp_reset_postdata();
+		echo "</section>";
 	}
 	?>
 

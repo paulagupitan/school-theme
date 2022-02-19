@@ -509,14 +509,6 @@ dt {
 dd {
   margin: 0 1.5em 1.5em;
 }
-a {
-  color: #003c71;
-  text-decoration: none;
-  font: 700px;
-}
-a:visited {
-  color: #003c71;
-}
 
 /* Make sure embeds and iframes fit their containers. */
 embed,
@@ -542,10 +534,12 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-  color: #4169e1;
+  color: #003c71;
+  text-decoration: none;
+  font: 700px;
 }
 a:visited {
-  color: #800080;
+  color: #003c71;
 }
 a:hover,
 a:focus,
@@ -652,6 +646,80 @@ svg path {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.site {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.site-main {
+  grid-area: main;
+  /* Resolves issue with <pre> elements forcing full width. */
+  padding: 0 1rem;
+}
+
+.widget-area {
+  padding: 3rem 1rem 1rem;
+}
+
+@supports (grid-area: auto) {
+  @media screen and (min-width: 50em) {
+    .site {
+      max-width: 2200px;
+      display: grid;
+      grid-template-columns: 1fr minmax(auto, 1000px) 1fr;
+      grid-template-areas:
+        "header header header"
+        ". main ."
+        "footer footer footer";
+    }
+
+    .page-template-left-sidebar .site {
+      grid-template-columns: 1fr minmax(auto, 280px) minmax(auto, 720px) 1fr;
+      grid-template-areas:
+        "header header header header"
+        ". sidebar main ."
+        "footer footer footer footer";
+    }
+
+    .no-sidebar .site,
+    .page-template-full-width .site,
+    .page-id-37 .site,
+    .blog .site,
+    .single-post .site,
+    .van-student-template-default .site,
+    .post-type-archive-van-student .site {
+      grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+      grid-template-areas:
+        "header header header"
+        ". main ."
+        ". sidebar ."
+        "footer footer footer";
+    }
+
+    .site-header {
+      grid-area: header;
+    }
+
+    .site-main {
+      grid-area: main;
+    }
+
+    .widget-area {
+      grid-area: sidebar;
+    }
+
+    .widget-area h2 {
+      font-size: 1.25rem;
+    }
+    .page-template-left-sidebar .widget-area {
+      padding: 3rem 3rem 1rem 1rem;
+    }
+
+    .site-footer {
+      grid-area: footer;
+    }
+  }
+}
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -744,6 +812,7 @@ svg path {
   display: block;
   padding: 0.75rem 1.25rem;
   text-align: center;
+  margin-top: 1rem;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -907,20 +976,113 @@ svg path {
   clear: both;
   margin: 0 0 1.5em;
 }
+/* Home Page */
 
 /* Students Page */
-.read-more {
+/* section {
   display: block;
-}
+} */
 
 .wp-block-buttons {
   padding-left: 1.5rem;
+}
+
+.single-page {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.single-page img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 600px) {
+  .students {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .single-page article {
+    width: 65%;
+    padding: 0 0 3rem;
+  }
+}
+
+/* Student single page */
+
+.single-title {
+  text-align: center;
+}
+.student-single {
+  padding: 2rem;
+}
+
+.meet-others {
+  padding: 2rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .student-single {
+    position: relative;
+  }
+
+  .student-single img {
+    display: inline;
+    float: right;
+  }
+  .student-item {
+    width: 48%;
+    margin: 0 0 3rem;
+  }
+  .alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.5em;
+  }
+}
+
+/* @media screen and (min-width: 600px) {
+  .student-single {
+    display: inline;
+    float: right;
+    margin-right: 1.75rem;
+  }
+} */
+
+/* Student taxonomy */
+@media screen and (min-width: 600px) {
+  .student-tax img {
+    display: inline;
+    float: left;
+    margin-right: 1.75rem;
+    padding-bottom: 2rem;
+  }
 }
 
 /* Staff Page */
 
 .staff-wrapper h2 {
   text-decoration: underline;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .staff-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    line-height: 2;
+  }
+  .staff-items {
+    width: 50%;
+    margin: 0;
+  }
+
+  .staff-items p {
+    margin-right: 2rem;
+  }
 }
 
 /* News Page */
@@ -954,6 +1116,15 @@ svg path {
 .schedule tr {
   display: block;
   padding: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .schedule th,
+  .schedule td {
+    display: table-cell;
+    width: 25%;
+    padding: 2rem;
+  }
 }
 
 /* Comments
@@ -1205,6 +1376,11 @@ svg path {
     max-width: 1300px;
     margin-left: -150px;
     margin-right: -150px;
+  }
+  .alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.5em;
   }
 }
 

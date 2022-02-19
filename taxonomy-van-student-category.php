@@ -24,7 +24,7 @@ get_header();
 				the_post();
 
 	?>
-    <article>
+    <article class="student-tax">
         <a href="<?php the_permalink(); ?>">
             <h2><?php the_title(); ?></h2>
             <?php the_post_thumbnail('medium');?>
