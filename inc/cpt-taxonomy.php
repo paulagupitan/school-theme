@@ -27,7 +27,7 @@ function van_register_custom_post_types() {
         'query_var'          => true,
         'rewrite'            => array( 'slug' => 'staffs' ),
         'capability_type'    => 'post',
-        'has_archive'        => true,
+        'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => 6,
         'menu_icon'          => 'dashicons-id',
